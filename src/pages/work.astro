@@ -1,0 +1,94 @@
+---
+import "../styles/global.css";
+
+const training = [
+  {
+    number: "01",
+    title: "First practical training",
+    status: "Completed",
+    description: "The beginning of my professional IT experience and the first opportunity to apply my studies in practice.",
+  },
+  {
+    number: "02",
+    title: "Second practical training",
+    status: "Completed",
+    description: "A second stage of hands-on learning, building on my technical knowledge and experience working on real tasks.",
+  },
+  {
+    number: "03",
+    title: "Third practical training",
+    status: "In progress",
+    description: "My current training period, where I continue developing my technical and professional skills through practical IT work.",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="IT project and practical training experience of Rolands Prohorovs." />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>Work & Experience — Rolands Prohorovs</title>
+  </head>
+  <body class="work-page">
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="wordmark" href="/" aria-label="Rolands Prohorovs, home">
+          <span class="wordmark-mark" aria-hidden="true">R</span>
+          <span>Rolands Prohorovs</span>
+        </a>
+
+        <nav aria-label="Primary navigation">
+          <a href="/">Home</a>
+          <a href="/#about">About</a>
+          <a href="/work" aria-current="page">Work</a>
+        </nav>
+
+        <a class="header-cta" href="mailto:roland.prohorov@inbox.lv">Let’s talk <span aria-hidden="true">↗</span></a>
+      </header>
+
+      <main>
+        <section class="work-intro" aria-labelledby="work-title">
+          <div>
+            <p class="eyebrow"><span></span> Experience through practice</p>
+            <h1 id="work-title">My IT journey,<br /><em>so far.</em></h1>
+          </div>
+          <p>
+            Three practical training periods have helped me turn classroom knowledge into hands-on experience.
+            Here is how that journey is developing.
+          </p>
+        </section>
+
+        <section class="training-list" aria-label="Practical training experience">
+          {training.map((item) => (
+            <article class="training-card">
+              <span class="training-number">{item.number}</span>
+              <div class="training-copy">
+                <div class="training-heading">
+                  <h2>{item.title}</h2>
+                  <span class:list={["training-status", { active: item.status === "In progress" }]}>{item.status}</span>
+                </div>
+                <p>{item.description}</p>
+                <div class="project-placeholder">
+                  <span>Project details</span>
+                  <span>Technologies</span>
+                  <span>Key results</span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <section class="work-contact">
+          <p class="eyebrow"><span></span> Let’s connect</p>
+          <h2>Interested in what I’m building?</h2>
+          <a class="button button-primary" href="mailto:roland.prohorov@inbox.lv">Get in touch <span aria-hidden="true">↗</span></a>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
