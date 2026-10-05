@@ -1,0 +1,55 @@
+---
+const navItems = [
+  { label: "IT project", href: "#work" },
+  { label: "ABOUT", href: "#about" },
+  { label: "WORK", href: "#experience" }
+  
+];
+---
+<main class="hero">
+  <!-- Background -->
+  <div class="hero-image"><img src="/rolands-prohorovs.jpg" alt="" /></div>
+  <div class="hero-overlay"></div>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <a href="/" class="logo">
+      <span>RP</span>
+      <small>PORTFOLIO / 2026</small>
+    </a>
+
+    <nav>
+      {navItems.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+  </header>
+
+  <!-- Hero content -->
+  <section class="hero-content">
+    <div class="hero-label">
+      <span></span>
+      SOFTWARE DEVELOPER
+    </div>
+
+    <h1>
+      ROLANDS
+      <br />
+      PROHOROVS<span>.</span>
+    </h1>
+  </section>
+
+  <!-- Bottom section -->
+  <section class="hero-bottom">
+    <div class="location">
+      <span>BASED IN</span>
+      <p>Lahti, Finland</p>
+    </div>
+
+    <div class="intro">
+      I'm an Industrial IT student focused on
+      <strong>software development</strong>,
+      modern technologies and building practical digital solutions.
+    </div>
+  </section>
+</main>

@@ -172,19 +172,6 @@ h1 span {
   color: var(--accent);
 }
 
-/* VERTICAL TEXT */
-
-.vertical-text {
-  position: absolute;
-  right: 6vw;
-  top: 45%;
-
-  writing-mode: vertical-rl;
-
-  font-size: 9px;
-  letter-spacing: 4px;
-  color: #aaa;
-}
 
 /* BOTTOM */
 

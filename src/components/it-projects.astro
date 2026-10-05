@@ -1,0 +1,132 @@
+<section id="work" class="work-section">
+  <div class="work-header">
+    <span class="work-label">SELECTED WORK</span>
+    <h2>Company Collaborations</h2>
+  </div>
+
+  <div class="work-slider" id="workSlider">
+    <div class="work-track" id="workTrack">
+
+      <!-- Slide: Peikko -->
+      <article class="work-slide slide-peikko">
+        <div class="logo-bg"></div>
+        <div class="overlay"></div>
+        <div class="small-logo">
+          <img src="/logos/peikko.png" alt="Peikko" class="logo-inverted" />
+        </div>
+        <div class="work-info">
+          <span class="work-number">03</span>
+          <h3>Peikko - Precast Wall Designer</h3>
+          <div class="work-meta">
+            <span class="work-status">Completed</span>
+            <span>01.02.2026 - 31.08.2026</span>
+          </div>
+          <p class="work-description">
+            Contributed to the development of a web-based engineering application for designing and calculating precast concrete wall elements for Peikko Group.
+          </p>
+          <ul class="work-details">
+            <li>Developed frontend and backend features using C#, .NET and Blazor WebAssembly</li>
+            <li>Implemented engineering calculation functionality</li>
+            <li>Developed and extended REST API endpoints and integrated calculation results with the frontend</li>
+            <li>Implemented application localization and language switching for multiple languages</li>
+            <li>Worked with Azure DevOps and Git in a team environment</li>
+            <li>Collaborated with the development team to translate engineering requirements into working software</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Slide: SEUL -->
+      <article class="work-slide slide-seul">
+        <div class="logo-bg"></div>
+        <div class="overlay"></div>
+        <div class="small-logo">
+          <img src="/logos/SEUL.png" alt="SEUL" />
+        </div>
+        <div class="work-info">
+          <span class="work-number">02</span>
+          <h3>SEUL - Gamer Matchmaking Web Application</h3>
+          <div class="work-meta">
+            <span class="work-status">Completed</span>
+            <span>01.09.2025 - 31.01.2026</span>
+          </div>
+          <p class="work-description">
+            Developed a full-stack web application designed to help gamers find players, create teams, and connect through gaming opportunities.
+          </p>
+          <ul class="work-details">
+            <li>Built a cross-platform mobile application using C# and .NET MAUI</li>
+            <li>Developed and tested application functionality using Visual Studio 2022</li>
+            <li>Tested the application using an Android Emulator</li>
+            <li>Collaborated in a team to implement requirements provided by the client</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Slide: Urajarvi Manor Museum -->
+      <article class="work-slide slide-museum">
+        <div class="logo-bg"></div>
+        <div class="overlay"></div>
+        <div class="work-info">
+          <span class="work-number">01</span>
+          <h3>Urajarvi Manor Museum - Mobile Application</h3>
+          <div class="work-meta">
+            <span class="work-status">Completed</span>
+            <span>16.01.2025 - 30.04.2025</span>
+          </div>
+          <p class="work-description">
+            Developed a mobile application for Urajarvi Manor Museum.
+          </p>
+          <ul class="work-details">
+            <li>Worked as Scrum Master in a 3-person development team, coordinating tasks and development progress</li>
+            <li>Developed REST API functionality for user profiles, authentication, teams, join requests, and job postings</li>
+            <li>Implemented authentication using JWT and Google OAuth 2.0</li>
+            <li>Deployed and maintained the application using Microsoft Azure and Azure DevOps CI/CD pipelines</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+
+    <button class="work-arrow work-arrow-left" id="workPrev" aria-label="Previous project">‹</button>
+    <button class="work-arrow work-arrow-right" id="workNext" aria-label="Next project">›</button>
+    <div class="work-dots" id="workDots"></div>
+  </div>
+</section>
+
+<script>
+  const track = document.getElementById("workTrack");
+  const slides = track.querySelectorAll(".work-slide");
+  const prevBtn = document.getElementById("workPrev");
+  const nextBtn = document.getElementById("workNext");
+  const dotsContainer = document.getElementById("workDots");
+
+  let current = 0;
+  const total = slides.length;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.classList.add("work-dot");
+    if (i === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+  const dots = dotsContainer.querySelectorAll(".work-dot");
+
+  function update() {
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle("active", i === current));
+  }
+  function goTo(index) {
+    current = (index + total) % total;
+    update();
+  }
+  nextBtn.addEventListener("click", () => goTo(current + 1));
+  prevBtn.addEventListener("click", () => goTo(current - 1));
+
+  let startX = 0;
+  track.addEventListener("touchstart", (e) => (startX = e.touches[0].clientX));
+  track.addEventListener("touchend", (e) => {
+    const diff = e.changedTouches[0].clientX - startX;
+    if (diff > 50) goTo(current - 1);
+    if (diff < -50) goTo(current + 1);
+  });
+</script>
